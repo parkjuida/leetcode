@@ -6,7 +6,6 @@
 
 
 typedef struct step {
-	char str[31];
 	int index_s;
 	int index_p;
 } step;
@@ -49,7 +48,6 @@ bool isMatch(char* s, char* p) {
 
 	stack->stack_index = 0;
 	step curr ;
-	strcpy(curr.str, s);
 	curr.index_s = 0;
 	curr.index_p = 0;
 
