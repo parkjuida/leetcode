@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="3_sum.cpp">
+    <ClCompile Include="remove_duplicates_from_sorted_array.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
