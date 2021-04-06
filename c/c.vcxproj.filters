@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="remove_duplicates_from_sorted_array.cpp">
+    <ClCompile Include="swap_nodes_in_pairs.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
