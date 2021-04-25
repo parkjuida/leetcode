@@ -2,34 +2,30 @@ from typing import List
 
 
 class Solution:
-    def get_next_iterator(self, index, height, length):
-        max_index = index + 1
-        for j in range(index + 1, length):
-            if height[j] >= height[index]:
-                return j
-            if height[j] > height[max_index]:
-                max_index = j
-
-        return max_index
-
-    def calculate(self, start, end, height):
-        min_poll = min(height[start], height[end])
-        rain = 0
-        for i in range(start + 1, end):
-            rain += (min_poll - height[i])
-
-        return rain
-
     def trap(self, height: List[int]) -> int:
         length = len(height)
-        iterator = 0
         rain = 0
-        while iterator < length:
-            next_iterator = self.get_next_iterator(iterator, height, length)
-            if next_iterator == length:
-                break
-            rain += self.calculate(iterator, next_iterator, height)
-            iterator = next_iterator
+        temp_rain = 0
+        current_max = 0
+
+        for i in range(length):
+            if height[current_max] < height[i]:
+                rain += temp_rain
+                temp_rain = 0
+                current_max = i
+
+            temp_rain += (height[current_max] - height[i])
+
+        maximum_index = current_max
+        current_max = length - 1
+        temp_rain = 0
+        for i in range(length - 1, maximum_index - 1, -1):
+            if height[current_max] <= height[i]:
+                rain += temp_rain
+                temp_rain = 0
+                current_max = i
+
+            temp_rain += (height[current_max] - height[i])
 
         return rain
 
