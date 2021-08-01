@@ -1,17 +1,12 @@
 class Solution:
     def trailingZeroes(self, n: int) -> int:
-        answer = 0
-        index = 0
-        while index + 5 <= n:
-            index += 5
-            count = 0
-            current_index = index
-            while current_index % 5 == 0:
-                count += 1
-                current_index //= 5
-            answer += count
+        count = 0
+        operand = 5
+        while operand <= n:
+            count += n // operand
+            operand *= 5
 
-        return answer
+        return count
 
 
 s = Solution()
