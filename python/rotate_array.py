@@ -6,23 +6,26 @@ class Solution:
         """
         Do not return anything, modify nums in-place instead.
         """
-        k = k % (len(nums))
+        start, count, n = 0, 0, len(nums)
+        k = k % n
 
-        temp = []
-        for i in range(-k, 0):
-            temp.append(nums[i])
+        while count < n:
+            current = (start + k) % n
+            current_value = nums[start]
+            count += 1
 
-        for i in range(len(nums) - 1, k - 1, -1):
-            nums[i] = nums[i - k]
+            while current != start:
+                nums[current], current_value = current_value, nums[current]
+                current = (current + k) % n
+                count += 1
 
-        for i in range(k - 1, -1, -1):
-            nums[i] = temp[i]
-
+            nums[current] = current_value
+            start += 1
         return nums
 
 
 s = Solution()
 print(s.rotate([1, 2, 3, 4, 5, 6, 7], 3))
 print(s.rotate([-1, -100, 3, 99], 2))
-print(s.rotate([1], 0))
-print(s.rotate([1, 2], 0))
+print(s.rotate([1], 1))
+print(s.rotate([1, 2], 1))
