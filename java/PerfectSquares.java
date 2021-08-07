@@ -15,10 +15,14 @@ public class PerfectSquares {
     }
     public int numSquares(int n) {
         int [] history = new int[n + 1];
-        Arrays.fill(history, -1);
+        Arrays.fill(history, 10000);
         history[0] = 0;
-        return calcSquares(n, history);
-
+        for(int i = 1; i <= n; i++) {
+            for(int j = 1; j * j <= i; j++) {
+                history[i] = Math.min(history[i], history[i - j * j] + 1);
+            }
+        }
+        return history[n];
     }
 
     public static void main(String[] args) {
