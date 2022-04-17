@@ -1,11 +1,4 @@
 
-class TreeNode(_value: Int = 0, _left: TreeNode = null, _right: TreeNode = null) {
-  var value: Int = _value
-  var left: TreeNode = _left
-  var right: TreeNode = _right
-}
-
-import scala.collection.mutable
 
 object PathSum2 extends App {
   def getPath(root: TreeNode, targetSum: Int): List[List[Int]] = {

@@ -7,9 +7,6 @@ object Sum3WithMultiplicity extends App {
   val modulo = Math.pow(10, 9) + 7
 
   def findKeySet(value: mutable.Map[Int, Int], target: Int, currentValue: Int, currentState: ListBuffer[Int]): Int = {
-    if(target < 0 || currentState.length > 3) {
-      return 0
-    }
     if(target == 0 && currentState.length == 3) {
       val currentUsed = currentState.groupBy(i => i).map {case (k, v) => (k, v.length)}
       val a: Long = currentUsed.keySet.toList.map(i => {
@@ -18,6 +15,9 @@ object Sum3WithMultiplicity extends App {
         n / d
       }).reduce[Long]{ case (a, b) => ((a * b) % modulo).toLong}
       return (a % modulo).toInt
+    }
+    if(target < 0 || currentState.length == 3) {
+      return 0
     }
     var answer = 0
     for(v <- sortedKeys) {
